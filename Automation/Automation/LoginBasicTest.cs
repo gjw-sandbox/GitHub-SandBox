@@ -53,7 +53,7 @@ namespace DesktopApp
             GeneralUtilities.LoginConnectUtil.LaunchDA();
             GeneralUtilities.LoginConnectUtil.LoginDA();
             GeneralUtilities.LoginConnectUtil.CancelConnectHost();
-            GeneralUtilities.LoginConnectUtil.ConnectHost("Joker");
+            GeneralUtilities.LoginConnectUtil.ConnectHost("Tester");
             GeneralUtilities.LoginConnectUtil.DisconnectHost();
             GeneralUtilities.LoginConnectUtil.LogoutDA();
             GeneralUtilities.LoginConnectUtil.CloseDA();
