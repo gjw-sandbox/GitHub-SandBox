@@ -223,12 +223,8 @@ namespace GeneralUtilities
 
             Thread.Sleep(1000);
             Mouse.Click(settingBladeCustom, new Point(44, 114));  // win10
-                                                                  // Mouse.Click(settingBladeCustom, new Point(62, 157));   // win7
+            // Mouse.Click(settingBladeCustom, new Point(62, 157));   // win7
             Thread.Sleep(8000);
-
-            WpfImage hamburgerImageImage = DesktopAppControls.GetHamburgerImageImage();
-            Mouse.Click(hamburgerImageImage);
-            Thread.Sleep(2000);
 
             Mouse.Click(); // ??? need this
             Thread.Sleep(1000);

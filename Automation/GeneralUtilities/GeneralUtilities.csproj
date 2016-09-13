@@ -63,6 +63,8 @@
     <Compile Include="FileTransferUtil.cs" />
     <Compile Include="FunctionalButtonsUtil.cs" />
     <Compile Include="LoginConnectUtil.cs" />
+    <Compile Include="LoginViewControls.cs" />
+    <Compile Include="loginViewUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SCLogHelper.cs" />
     <Compile Include="DesktopAppControls.cs" />

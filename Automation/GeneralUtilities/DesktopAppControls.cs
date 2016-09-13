@@ -37,15 +37,6 @@ namespace GeneralUtilities
         private static WpfButton _closeButton = null;
 
 
-        // **** cannot identify the hamburger below
-        private static WpfTabList _mainTabControlTabList = null;
-        private static WpfTabPage _win10awsTabPage = null;
-        private static WpfPane _winformHostPane1 = null;
-        private static WinClient _itemClient1 = null;
-        private static WpfWindow _wpfWindow1 = null;
-        private static WpfCustom _itemCustom1 = null;
-        private static WpfImage _hamburgerImageImage = null;
-
         /*
          * 
          *  Desktop App windows
@@ -289,76 +280,6 @@ namespace GeneralUtilities
 
             }
             return _confirmSignOutYesButton;
-        }
-
-        public static WpfTabList GetMainTabControlTabList()
-        {
-            if (_mainTabControlTabList == null)
-            {
-                _mainTabControlTabList = new WpfTabList(GetShareConnectWindow());
-                _mainTabControlTabList.SearchProperties[WpfTabList.PropertyNames.AutomationId] = "MainTabControl";
-            }
-            return _mainTabControlTabList;
-        }
-
-        public static WpfTabPage GetWin10awsTabPage()
-        {
-            if (_win10awsTabPage == null)
-            {
-                _win10awsTabPage = new WpfTabPage(GetMainTabControlTabList());
-                _win10awsTabPage.SearchProperties[WpfTabPage.PropertyNames.Name] = "win10 aws";
-            }
-            return _win10awsTabPage;
-        }
-
-        public static WpfPane GetWinformHostPane1()
-        {
-            if (_winformHostPane1 == null)
-            {
-                _winformHostPane1 = new WpfPane(GetWin10awsTabPage());
-                _winformHostPane1.SearchProperties[WpfPane.PropertyNames.ClassName] = "Uia.WindowsFormsHost";
-                _winformHostPane1.SearchProperties[WpfPane.PropertyNames.AutomationId] = "WinformHost";
-            }
-            return _winformHostPane1;
-        }
-
-        public static WinClient GetItemClient1()
-        {
-            if (_itemClient1 == null)
-            {
-                _itemClient1 = new WinClient(GetWinformHostPane1());
-            }
-            return _itemClient1;
-        }
-
-        public static WpfWindow GetWpfWindow1()
-        {
-            if (_wpfWindow1 == null)
-            {
-                _wpfWindow1 = new WpfWindow(GetItemClient1());
-                _wpfWindow1.SearchProperties[WpfWindow.PropertyNames.Name] = "Login to your server";
-            }
-            return _wpfWindow1;
-        }
-
-        public static WpfCustom GetItemCustom1()
-        {
-            if (_itemCustom1 == null)
-            {
-                _itemCustom1 = new WpfCustom(GetWpfWindow1());
-                _itemCustom1.SearchProperties[WpfControl.PropertyNames.ClassName] = "Uia.ComputerLoginControl";
-            }
-            return _itemCustom1;
-        }
-
-        public static WpfImage GetHamburgerImageImage()
-        {
-            if (_hamburgerImageImage == null)
-            {
-                _hamburgerImageImage = new WpfImage(GetItemCustom1());
-                _hamburgerImageImage.SearchProperties[WpfImage.PropertyNames.AutomationId] = "HamburgerImage";
-            }
-            return _hamburgerImageImage;
         }
         
     }
