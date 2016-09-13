@@ -56,7 +56,7 @@ namespace DesktopApp
             else
             {
                 Mouse.Click(new Point(908, 560));
-                Logger.log.Info("    ===  Start signing out, wait for 60 seconds  === ");
+                Logger.log.Info("    ===  Start signing out, wait for 30 seconds  === ");
                 Thread.Sleep(5000);
                 Mouse.Location = new Point(650, 940);
                 Mouse.Click(new Point(650, 940));   // close applications
