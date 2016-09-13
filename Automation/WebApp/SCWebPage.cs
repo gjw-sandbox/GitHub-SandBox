@@ -17,8 +17,8 @@ namespace WebApp
 
         static SCWebPage()
         {
-            driverChrome = SCDriverChrome.Driver();
-            driverChromeWait = SCDriverChrome.DriverWait();
+            driverChrome = SCDriverChrome.driverChrome;
+            driverChromeWait = SCDriverChrome.driverChromeWait;
         }
 
         public static void SignInToSC(string emailAdr, string pwd)

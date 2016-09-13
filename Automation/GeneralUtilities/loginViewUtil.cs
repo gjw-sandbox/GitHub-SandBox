@@ -43,7 +43,7 @@ namespace GeneralUtilities
             Mouse.Click(logInButton);
             Thread.Sleep(2000);
 
-            // pwd
+            // cancel button
             WpfButton cancelButton = LoginViewControls.GetCancelButton();
             Mouse.Click(cancelButton);
             Thread.Sleep(2000);

@@ -11,23 +11,14 @@ namespace WebApp
 {
     class SCDriverChrome
     {
-        private static IWebDriver driverChrome;
-        private static WebDriverWait driverChromeWait;
+        public static IWebDriver driverChrome { get; set; }
+
+        public static WebDriverWait driverChromeWait { get; set; }
 
         static SCDriverChrome()
         {
             driverChrome = new ChromeDriver();
             driverChromeWait = new WebDriverWait(driverChrome, TimeSpan.FromSeconds(15));
         }
-        public static IWebDriver Driver()
-        {
-            return driverChrome;
-        }
-
-        public static WebDriverWait DriverWait()
-        {
-            return driverChromeWait;
-        }
-
     }
 }

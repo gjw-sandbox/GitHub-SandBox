@@ -15,15 +15,15 @@ namespace WebApp
         public static void GoToSettings()
         {
             // Click "Settings"
-            SCDriverChrome.Driver().FindElement(By.Id("topMenuLink")).Click();  // click this first to expose "Sign Out" and "Settings"
+            SCDriverChrome.driverChrome.FindElement(By.Id("topMenuLink")).Click();  // click this first to expose "Sign Out" and "Settings"
             Thread.Sleep(2000);
-            SCDriverChrome.Driver().FindElement(By.LinkText("Settings")).Click();
+            SCDriverChrome.driverChrome.FindElement(By.LinkText("Settings")).Click();
             Thread.Sleep(2000);
 
             // Verify that Account Info page is displayed
             try
             {
-                SCDriverChrome.Driver().FindElement(By.XPath("//label[text()='Account Information']"));
+                SCDriverChrome.driverChrome.FindElement(By.XPath("//label[text()='Account Information']"));
                 //MessageBox.Show("Found it!");
             }
             catch (NoSuchElementException)
@@ -35,20 +35,20 @@ namespace WebApp
         public static void GoToComputers()
         {
             // Click "Computers"
-            SCDriverChrome.Driver().FindElement(By.XPath("//*[@id='sidebar-wrapper']/div/ul[2]/li[1]")).Click();
+            SCDriverChrome.driverChrome.FindElement(By.XPath("//*[@id='sidebar-wrapper']/div/ul[2]/li[1]")).Click();
             Thread.Sleep(3000);
         }
 
         public static void GoToDashboard()
         {
             // Click "Dashboard"
-            SCDriverChrome.Driver().FindElement(By.XPath("//*[@id='sidebar-wrapper']/div/ul[3]/li[2]/a")).Click();
+            SCDriverChrome.driverChrome.FindElement(By.XPath("//*[@id='sidebar-wrapper']/div/ul[3]/li[2]/a")).Click();
             Thread.Sleep(3000);
 
             // Verify that Account Info page is displayed
             try
             {
-                SCDriverChrome.Driver().FindElement(By.XPath("//h2[text()='Dashboard']"));
+                SCDriverChrome.driverChrome.FindElement(By.XPath("//h2[text()='Dashboard']"));
                 //MessageBox.Show("Found dashboard!");
             }
             catch (NoSuchElementException)
@@ -59,8 +59,8 @@ namespace WebApp
 
         public static void SignOut()
         {
-            SCDriverChrome.Driver().FindElement(By.Id("topMenuLink")).Click();  // click this first to expose "Sign Out" and "Settings"
-            SCDriverChrome.Driver().FindElement(By.LinkText("Sign Out")).Click();
+            SCDriverChrome.driverChrome.FindElement(By.Id("topMenuLink")).Click();  // click this first to expose "Sign Out" and "Settings"
+            SCDriverChrome.driverChrome.FindElement(By.LinkText("Sign Out")).Click();
         }
 
     }

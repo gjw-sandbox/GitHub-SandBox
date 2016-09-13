@@ -18,14 +18,14 @@ namespace WebApp
     [TestFixture]
     public class WebAppTest
     {
-        IWebDriver driverChrome;
-        WebDriverWait driverChromeWait;
+        private IWebDriver driverChrome;
+        private WebDriverWait driverChromeWait;
 
         [SetUp]
         public void Init()
         {
-            driverChrome = SCDriverChrome.Driver();
-            driverChromeWait = SCDriverChrome.DriverWait();
+            driverChrome = SCDriverChrome.driverChrome;
+            driverChromeWait = SCDriverChrome.driverChromeWait;
         }
 
         [Test]
