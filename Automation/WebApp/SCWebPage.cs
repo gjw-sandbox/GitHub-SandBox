@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -12,41 +13,38 @@ namespace WebApp
 {
     class SCWebPage
     {
-        private static IWebDriver driverChrome;
-        private static WebDriverWait driverChromeWait;
-
-        static SCWebPage()
+        public SCWebPage()
         {
-            driverChrome = SCDriverChrome.driverChrome;
-            driverChromeWait = SCDriverChrome.driverChromeWait;
+            PageFactory.InitElements(SCDriverChrome.driverChrome, this);
         }
 
-        public static void SignInToSC(string emailAdr, string pwd)
+        [FindsBy(How = How.Id, Using = "signin")]
+        public IWebElement SignInBtn { set; get; }
+
+        [FindsBy(How = How.Id, Using = "RegFormSubmit")]
+        public IWebElement SignUpBtn { set; get; }
+
+        [FindsBy(How = How.Id, Using = "RegFirstName")]
+        public IWebElement firstNameTxt { set; get; }
+
+        // add more stuff here for last name... etc
+
+
+
+        public SCSignInPage SignInToSC()
         {
-            driverChrome.Navigate().GoToUrl("http://app1.shareconnectdev.com");
+            // this will bring user to the sign-in page
+            SignInBtn.Click();
 
-            driverChrome.FindElement(By.Id("signin")).Click();
-
-            SignInWithCredential(emailAdr, pwd);
+            return new SCSignInPage();
         }
 
-        private static void SignInWithCredential(string emailAdr, string pwd)
+        public void SignUpSC(string emailAdr, string pwd)
         {
-            driverChromeWait.Until(ExpectedConditions.ElementExists(By.Id("credentials-email")));
-            driverChrome.FindElement(By.Id("credentials-email")).SendKeys(emailAdr);
-            driverChrome.FindElement(By.Id("credentials-password")).SendKeys(pwd);
-            driverChrome.FindElement(By.Id("start-button")).Click();
+            firstNameTxt.SendKeys("Tester1");
+            //.... and more 
 
-            DismissDAInstaller();
+            SignUpBtn.Click();
         }
-
-        private static void DismissDAInstaller()
-        {
-            // dis-miss "install DA"
-            driverChromeWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//img[contains(@src, 'closeoverlay')]")));
-            driverChrome.FindElement(By.XPath("//img[contains(@src, 'closeoverlay')]")).Click();
-            Thread.Sleep(2000);
-        }
-
     }
 }
