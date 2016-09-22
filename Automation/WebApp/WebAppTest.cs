@@ -113,10 +113,19 @@ namespace WebApp
         [Test]
         public void WebApp_VerifySignOut()
         {
-            //scWebPage.SignInToSC(GeneralUtilities.ConstantsUtil.defaultUserEmail,
-            //                     GeneralUtilities.ConstantsUtil.defaultUserPwd);
+                SCDriverChrome.driverChrome.Navigate().GoToUrl("http://app1.shareconnectdev.com");
 
-            //SCHomePage.SignOut();
+                // this clicks the "Sign In" and goes to the SC login in page 
+                SCSignInPage scSignInPage = scWebPage.SignInToSC();
+
+                Thread.Sleep(3000);
+
+                // This is to sign in the SC account
+                SCHomePage scHomePage = scSignInPage.SignInToSC(GeneralUtilities.ConstantsUtil.defaultUserEmail,
+                                                                GeneralUtilities.ConstantsUtil.defaultUserPwd);
+                Thread.Sleep(3000);
+
+                scHomePage.SignOut();
         }
 
         [Test]
