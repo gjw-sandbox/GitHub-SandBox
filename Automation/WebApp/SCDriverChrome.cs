@@ -18,7 +18,7 @@ namespace WebApp
         static SCDriverChrome()
         {
             driverChrome = new ChromeDriver();
-            driverChromeWait = new WebDriverWait(driverChrome, TimeSpan.FromSeconds(15));
+            driverChromeWait = new WebDriverWait(driverChrome, TimeSpan.FromSeconds(30));
         }
     }
 }

@@ -26,6 +26,12 @@ namespace WebApp
         [FindsBy(How = How.LinkText, Using = "Settings")]
         public IWebElement settings { set; get; }
 
+        [FindsBy(How = How.LinkText, Using = "Computers")]
+        public IWebElement computers { set; get; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='sidebar-wrapper']/div/ul[3]/li[2]/a")]
+        public IWebElement dashboard { set; get; }
+
 
         public void SignOutSC()
         {
@@ -58,36 +64,42 @@ namespace WebApp
             }
         }
 
-        //public static void GoToComputers()
-        //{
-        //    // Click "Computers"
-        //    SCDriverChrome.driverChrome.FindElement(By.XPath("//*[@id='sidebar-wrapper']/div/ul[2]/li[1]")).Click();
-        //    Thread.Sleep(3000);
-        //}
+        public ComputersPage GoToComputers()
+        {
+            // Click "Computers"
+            computers.Click();
+            Thread.Sleep(2000);
 
-        //public static void GoToDashboard()
-        //{
-        //    // Click "Dashboard"
-        //    SCDriverChrome.driverChrome.FindElement(By.XPath("//*[@id='sidebar-wrapper']/div/ul[3]/li[2]/a")).Click();
-        //    Thread.Sleep(3000);
+            return new ComputersPage();
+        }
 
-        //    // Verify that Account Info page is displayed
-        //    try
-        //    {
-        //        SCDriverChrome.driverChrome.FindElement(By.XPath("//h2[text()='Dashboard']"));
-        //        //MessageBox.Show("Found dashboard!");
-        //    }
-        //    catch (NoSuchElementException)
-        //    {
-        //        MessageBox.Show("Error!!! No Dashboard found!");
-        //    }
-        //}
+        public void GoToDashboard()
+        {
+            // Click "Dashboard"
+            dashboard.Click();
+            Thread.Sleep(3000);
 
-        //public static void SignOut()
-        //{
-        //    SCDriverChrome.driverChrome.FindElement(By.Id("topMenuLink")).Click();  // click this first to expose "Sign Out" and "Settings"
-        //    SCDriverChrome.driverChrome.FindElement(By.LinkText("Sign Out")).Click();
-        //}
+            // Verify that Account Info page is displayed
+            try
+            {
+                SCDriverChrome.driverChrome.FindElement(By.XPath("//h2[text()='Dashboard']"));
+                //MessageBox.Show("Found dashboard!");
+            }
+            catch (NoSuchElementException)
+            {
+                MessageBox.Show("Error!!! No Dashboard found!");
+            }
+        }
+
+        public void SignOut()
+        {
+            // Click "Settings"
+            user.Click();
+            Thread.Sleep(1000);
+
+            signout.Click();
+            Thread.Sleep(2000);
+        }
 
     }
 }
