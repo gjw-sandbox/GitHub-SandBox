@@ -29,8 +29,11 @@ namespace WebApp
         [FindsBy(How = How.LinkText, Using = "Computers")]
         public IWebElement computers { set; get; }
 
-        [FindsBy(How = How.XPath, Using = "//*[@id='sidebar-wrapper']/div/ul[3]/li[2]/a")]
-        public IWebElement dashboard { set; get; }
+        //[FindsBy(How = How.XPath, Using = "//*[@id='sidebar-wrapper']/div/ul[3]/li[2]/a")]
+        //public IWebElement dashboard { set; get; }
+
+        [FindsBy(How = How.LinkText, Using = "Manage Users")]
+        public IWebElement ManageUsers { set; get; }
 
 
         public void SignOutSC()
@@ -73,22 +76,30 @@ namespace WebApp
             return new ComputersPage();
         }
 
-        public void GoToDashboard()
-        {
-            // Click "Dashboard"
-            dashboard.Click();
-            Thread.Sleep(3000);
+        //public void GoToDashboard()
+        //{
+        //    // Click "Dashboard"
+        //    dashboard.Click();
+        //    Thread.Sleep(3000);
 
-            // Verify that Account Info page is displayed
-            try
-            {
-                SCDriverChrome.driverChrome.FindElement(By.XPath("//h2[text()='Dashboard']"));
-                //MessageBox.Show("Found dashboard!");
-            }
-            catch (NoSuchElementException)
-            {
-                MessageBox.Show("Error!!! No Dashboard found!");
-            }
+        //    // Verify that Account Info page is displayed
+        //    try
+        //    {
+        //        SCDriverChrome.driverChrome.FindElement(By.XPath("//h2[text()='Dashboard']"));
+        //        //MessageBox.Show("Found dashboard!");
+        //    }
+        //    catch (NoSuchElementException)
+        //    {
+        //        MessageBox.Show("Error!!! No Dashboard found!");
+        //    }
+        //}
+
+        public void GotoManageUsers()
+        {
+            // Click "Manage Users"
+            ManageUsers.Click();
+            Thread.Sleep(2000);
+
         }
 
         public void SignOut()

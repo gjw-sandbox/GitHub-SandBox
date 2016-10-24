@@ -21,6 +21,25 @@ namespace WebApp
     {
         private SCWebPage scWebPage;
 
+        private SCHomePage SignIn()
+        {
+            SCDriverChrome.driverChrome.Navigate().GoToUrl("http://app1.shareconnectdev.com");
+
+            // this clicks the "Sign In" and goes to the SC login in page 
+            SCSignInPage scSignInPage = scWebPage.SignInToSC();
+
+            Thread.Sleep(3000);
+
+            // This is to sign in the SC account
+            SCHomePage scHomePage = scSignInPage.SignInToSC(GeneralUtilities.ConstantsUtil.defaultUserEmail,
+                                                            GeneralUtilities.ConstantsUtil.defaultUserPwd);
+
+            Thread.Sleep(3000);
+
+            return scHomePage;
+        }
+
+
         [SetUp]
         public void Init()
         {
@@ -30,21 +49,10 @@ namespace WebApp
         [Test]
         public void WebApp_SignIn()
         {
-            SCDriverChrome.driverChrome.Navigate().GoToUrl("http://app1.shareconnectdev.com");
-
-            // this clicks the "Sign In" and goes to the SC login in page 
-            SCSignInPage scSignInPage = scWebPage.SignInToSC();
-
-            Thread.Sleep(3000);
-
-            // This is to sign in the SC account
-            SCHomePage scHomePage = scSignInPage.SignInToSC(GeneralUtilities.ConstantsUtil.defaultUserEmail,
-                                                            GeneralUtilities.ConstantsUtil.defaultUserPwd);
-
-            Thread.Sleep(3000);
+            SCHomePage scHomePage = SignIn();
 
             scHomePage.SignOutSC();
-            
+
             //string x = driverChrome.PageSource;
             //Logger.log.Info(x);
         }
@@ -52,18 +60,8 @@ namespace WebApp
         [Test]
         public void WebApp_VerifySettings()
         {
-            SCDriverChrome.driverChrome.Navigate().GoToUrl("http://app1.shareconnectdev.com");
+            SCHomePage scHomePage = SignIn();
 
-            // this clicks the "Sign In" and goes to the SC login in page 
-            SCSignInPage scSignInPage = scWebPage.SignInToSC();
-
-            Thread.Sleep(3000);
-
-            // This is to sign in the SC account
-            SCHomePage scHomePage = scSignInPage.SignInToSC(GeneralUtilities.ConstantsUtil.defaultUserEmail,
-                                                            GeneralUtilities.ConstantsUtil.defaultUserPwd);
-            
-            Thread.Sleep(3000);
             scHomePage.GoToSettings();
 
             scHomePage.SignOutSC();
@@ -72,40 +70,21 @@ namespace WebApp
         [Test]
         public void WebApp_VerifyComputers()
         {
-            SCDriverChrome.driverChrome.Navigate().GoToUrl("http://app1.shareconnectdev.com");
-
-            // this clicks the "Sign In" and goes to the SC login in page 
-            SCSignInPage scSignInPage = scWebPage.SignInToSC();
-
-            Thread.Sleep(3000);
-
-            // This is to sign in the SC account
-            SCHomePage scHomePage = scSignInPage.SignInToSC(GeneralUtilities.ConstantsUtil.defaultUserEmail,
-                                                            GeneralUtilities.ConstantsUtil.defaultUserPwd);
-            Thread.Sleep(3000);
+            SCHomePage scHomePage = SignIn();
 
             ComputersPage computersPage = scHomePage.GoToComputers();
+
             Thread.Sleep(3000);
 
             scHomePage.SignOutSC();
         }
 
         [Test]
-        public void WebApp_VerifyDashboard()
+        public void WebApp_VerifyManageUsers()
         {
-            SCDriverChrome.driverChrome.Navigate().GoToUrl("http://app1.shareconnectdev.com");
+            SCHomePage scHomePage = SignIn();
 
-            // this clicks the "Sign In" and goes to the SC login in page 
-            SCSignInPage scSignInPage = scWebPage.SignInToSC();
-
-            Thread.Sleep(3000);
-
-            // This is to sign in the SC account
-            SCHomePage scHomePage = scSignInPage.SignInToSC(GeneralUtilities.ConstantsUtil.defaultUserEmail,
-                                                            GeneralUtilities.ConstantsUtil.defaultUserPwd);
-            Thread.Sleep(3000);
-
-            scHomePage.GoToDashboard();
+            scHomePage.GotoManageUsers();
 
             scHomePage.SignOut();
         }
@@ -113,19 +92,9 @@ namespace WebApp
         [Test]
         public void WebApp_VerifySignOut()
         {
-                SCDriverChrome.driverChrome.Navigate().GoToUrl("http://app1.shareconnectdev.com");
+            SCHomePage scHomePage = SignIn();
 
-                // this clicks the "Sign In" and goes to the SC login in page 
-                SCSignInPage scSignInPage = scWebPage.SignInToSC();
-
-                Thread.Sleep(3000);
-
-                // This is to sign in the SC account
-                SCHomePage scHomePage = scSignInPage.SignInToSC(GeneralUtilities.ConstantsUtil.defaultUserEmail,
-                                                                GeneralUtilities.ConstantsUtil.defaultUserPwd);
-                Thread.Sleep(3000);
-
-                scHomePage.SignOut();
+            scHomePage.SignOut();
         }
 
         [Test]

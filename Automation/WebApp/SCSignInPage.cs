@@ -35,7 +35,7 @@ namespace WebApp
 
             signInBtn.Click();
 
-            DismissDAInstaller();
+            //DismissDAInstaller();  // may not need this any more. This is for the DA installer stuff
 
             return new SCHomePage();
         }
